@@ -7,5 +7,5 @@ CREATE TABLE contatos(
     sobrenome TEXT NOT NULL,
     cpf CHAR(14) UNIQUE, 
     email TEXT UNIQUE,
-    telefone INTEGER NOT NULL UNIQUE
+    telefone TEXT NOT NULL UNIQUE
 );
