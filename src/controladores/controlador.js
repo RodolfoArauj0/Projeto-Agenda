@@ -29,7 +29,14 @@ const inserindoContato = async (req, res)=>{
             return res.status(400).json({erro:"E-mail já cadastrado..."})
         }
 
-        const cadastrandoUsuario = await knex('contatos').insert({nome, sobrenome, telefone, email, cpf}).returning('*');
+        const cadastrandoUsuario = await knex('contatos')
+        .insert({
+            nome, 
+            sobrenome, 
+            telefone, 
+            email, 
+            cpf
+        }).returning('*');
         
         if(cadastrandoUsuario.length === 0){
         return res.status(400).json({erro:"Contato não cadastrado!"});
@@ -84,7 +91,7 @@ const exluirContato = async (req,res)=>{
     try {           
         const exluindoContato = await knex('contatos').del().where({id});
 
-        if(exluindoContato.length === 0){
+        if(!exluindoContato){
             return res.status(400).json({erro:"Contato não encontrado!"})
         }
         return res.status(200).json({mensagem:"Usuário excluído com sucesso!"})
