@@ -87,7 +87,6 @@ const exluirContato = async (req,res)=>{
         if(exluindoContato.length === 0){
             return res.status(400).json({erro:"Contato não encontrado!"})
         }
-        
         return res.status(200).json({mensagem:"Usuário excluído com sucesso!"})
         
     } catch (error) {
